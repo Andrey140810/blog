@@ -1,21 +1,31 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
+import { Header } from './components';
+
+const AppColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 1000px;
+	min-height: 100%;
+	background-color: #fff;
+	margin: auto;
+`;
 
 const Content = styled.div`
 	text-align: center;
-	padding: 120px 0;
+	padding: 130px 0;
 `;
 
 const H2 = styled.h2`
 	text-align: center;
 `;
 
-const Header = () => <div>Шапка</div>;
 const Footer = () => <div>Футер</div>;
 
 export function Blog() {
 	return (
-		<>
+		<AppColumn>
 			<Header />
 			<Content>
 				<h2>Контент страницы</h2>
@@ -30,6 +40,6 @@ export function Blog() {
 				</Routes>
 			</Content>
 			<Footer />
-		</>
+		</AppColumn>
 	);
 }
