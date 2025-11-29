@@ -10,6 +10,6 @@ export const addUser = (login, password) =>
 			login,
 			password,
 			registed_at: generateDate(),
-			role_id: 2,
+			roleId: 2,
 		}),
 	});

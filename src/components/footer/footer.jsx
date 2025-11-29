@@ -14,7 +14,7 @@ const FooterContainer = ({ className }) => {
 						const { latitude, longitude } = position.coords;
 
 						fetch(
-							`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=ru&appid=0792f07056798f01cd2ea7c001c1efe6`,
+							`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=ru&appid=657dc6a96d71e54bf1b16c9270787da7`,
 						)
 							.then((res) => {
 								if (!res.ok) {
