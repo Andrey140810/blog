@@ -34,24 +34,26 @@ export const server = {
 		};
 	},
 	async register(regLogin, regPassword) {
-		const user = await getUser(regLogin);
+		const existedUser = await getUser(regLogin);
 
-		if (user) {
+		if (existedUser) {
 			return {
 				error: 'Такой логин уже занят',
 				res: null,
 			};
 		}
 
-		await addUser(regLogin, regPassword);
+		const response = await addUser(regLogin, regPassword);
+
+		const newUser = await response.json();
 
 		return {
 			error: null,
 			res: {
-				session: sessions.create(user),
-				id: null,
-				login: null,
-				roleId: user.role_id,
+				id: newUser.id,
+				login: newUser.login,
+				roleId: newUser.roleId,
+				session: sessions.create(newUser),
 			},
 		};
 	},
