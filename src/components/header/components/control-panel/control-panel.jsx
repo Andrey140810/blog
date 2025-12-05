@@ -16,16 +16,6 @@ const RightAligned = styled.div`
 	align-items: center;
 `;
 
-const StyledBackIcon = styled.div`
-	cursor: pointer;
-`;
-
-const StyledLogoutIcon = styled.div`
-	&:hover {
-		cursor: pointer;
-	}
-`;
-
 const UserName = styled.div`
 	font-size: 18px;
 	font-weight: bold;
@@ -53,22 +43,20 @@ const ControPanelContainer = ({ className }) => {
 				) : (
 					<>
 						<UserName>{login}</UserName>
-						<StyledLogoutIcon>
-							<Icon
-								id="fa-sign-out"
-								margin="0 0 0 10px"
-								onClick={handleClickLogout}
-							/>
-						</StyledLogoutIcon>
+						<Icon
+							id="fa-sign-out"
+							margin="0 0 0 10px"
+							onClick={handleClickLogout}
+						/>
 					</>
 				)}
 			</RightAligned>
 			<RightAligned>
-				<StyledBackIcon>
-					<div onClick={() => navigate(-1)}>
-						<Icon id="fa-backward" margin="10px 0 0 0" />
-					</div>
-				</StyledBackIcon>
+				<Icon
+					onClick={() => navigate(-1)}
+					id="fa-backward"
+					margin="10px 0 0 0"
+				/>
 				<Link to="/post">
 					<Icon id="fa-file-text-o" margin="10px 0 0 18px" />
 				</Link>

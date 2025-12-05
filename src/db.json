@@ -4,15 +4,22 @@
       "id": "001",
       "login": "andrey",
       "password": "qwerty",
-      "registed_at": "2025-12-25",
-      "roleId": "123"
+      "registered_at": "2025-12-25",
+      "role_id": 0
     },
     {
       "login": "anton",
       "password": "qwerty",
-      "registed_at": "2053-10-10 17:37",
-      "roleId": 2,
+      "registered_at": "2053-10-10 17:37",
+      "role_id": 2,
       "id": "EKtw9Xm"
+    },
+    {
+      "login": "vasiliy",
+      "password": "qwerty",
+      "registered_at": "2056-10-25 23:02",
+      "role_id": 2,
+      "id": "yLeLuBG"
     }
   ],
   "roles": [
