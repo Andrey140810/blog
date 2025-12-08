@@ -30,6 +30,7 @@ const ControPanelContainer = ({ className }) => {
 
 	const handleClickLogout = () => {
 		dispatch(logout(session));
+		sessionStorage.removeItem('userData');
 		navigate('/login');
 	};
 

@@ -5,3 +5,5 @@ export { fetchRoles } from './fetch-roles';
 export { updateUserRole } from './update-user-role';
 export { fetchUsers } from './fetch-users';
 export { removeUser } from './remove-user';
+export { fetchPost } from './fetch-post';
+export { addPostComment } from './add-post-comment';
