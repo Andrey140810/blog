@@ -7,3 +7,4 @@ export { fetchUsers } from './fetch-users';
 export { removeUser } from './remove-user';
 export { fetchPost } from './fetch-post';
 export { addPostComment } from './add-post-comment';
+export { removePostComment } from './remove-post-comment';
