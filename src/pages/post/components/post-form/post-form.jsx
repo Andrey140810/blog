@@ -49,6 +49,7 @@ const PostFormContainer = ({
 				placeholder="Заголовок..."
 			/>
 			<SpecialPanel
+				id={id}
 				publishedAt={publishedAt}
 				iconButton={
 					<Icon

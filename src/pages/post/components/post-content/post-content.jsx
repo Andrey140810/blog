@@ -14,8 +14,8 @@ const PostContentContainer = ({
 			<img src={imageUrl} alt={title} />
 			<H2>{title}</H2>
 			<SpecialPanel
+				id={id}
 				publishedAt={publishedAt}
-				question="Удалить пост?"
 				iconButton={
 					<Icon
 						id="fa-pencil-square-o"

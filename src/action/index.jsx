@@ -9,3 +9,4 @@ export { CLOSE_MODAL } from './close-modal';
 export { openModal } from './open-modal';
 export { savePostAsync } from './save-post-async';
 export { removePostAsync } from './remove-post-async';
+export { RESET_POST_DATA } from './reset-post-data';

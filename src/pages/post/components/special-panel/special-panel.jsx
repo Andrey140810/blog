@@ -3,24 +3,21 @@ import { Icon } from '../../../../components';
 import { useDispatch } from 'react-redux';
 import { useServerRequest } from '../../../../hooks';
 import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../action';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const SpecialPanelContainer = ({
-	className,
-	publishedAt,
-	iconButton,
-	question,
-}) => {
+const SpecialPanelContainer = ({ className, id, publishedAt, iconButton }) => {
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
-	const onRemovePost = (postId) => {
+	const onRemovePost = (id) => {
 		dispatch(
 			openModal({
-				question: question,
+				question: 'Удалить статью?',
 				onConfirm: () => {
-					dispatch(removePostAsync(requestServer, postId));
+					dispatch(removePostAsync(requestServer, id)).then(() =>
+						navigate('/'),
+					);
 					dispatch(CLOSE_MODAL);
 				},
 				onCancel: () => dispatch(CLOSE_MODAL),
@@ -40,7 +37,7 @@ const SpecialPanelContainer = ({
 				<Icon
 					id="fa-trash-o"
 					margin="0 0 0 10px"
-					onClick={onRemovePost}
+					onClick={() => onRemovePost(id)}
 				/>
 			</div>
 		</div>
