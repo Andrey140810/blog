@@ -8,3 +8,5 @@ export { removeUser } from './remove-user';
 export { fetchPost } from './fetch-post';
 export { addPostComment } from './add-post-comment';
 export { removePostComment } from './remove-post-comment';
+export { savePost } from './save-post';
+export { removePost } from './remove-post';

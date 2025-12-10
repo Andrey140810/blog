@@ -7,3 +7,5 @@ export { addCommentAsync } from './add-comment-async';
 export { removeCommentAsync } from './remove-comment-async';
 export { CLOSE_MODAL } from './close-modal';
 export { openModal } from './open-modal';
+export { savePostAsync } from './save-post-async';
+export { removePostAsync } from './remove-post-async';
