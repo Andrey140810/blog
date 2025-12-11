@@ -28,17 +28,19 @@ const SpecialPanelContainer = ({ className, id, publishedAt, iconButton }) => {
 	return (
 		<div className={className}>
 			<div className="date-panel">
-				<Icon id="fa-calendar-o" />
+				{publishedAt && <Icon id="fa-calendar-o" />}
 				{publishedAt}
 			</div>
 
 			<div className="buttons-panel">
 				{iconButton}
-				<Icon
-					id="fa-trash-o"
-					margin="0 0 0 10px"
-					onClick={() => onRemovePost(id)}
-				/>
+				{publishedAt && (
+					<Icon
+						id="fa-trash-o"
+						margin="0 0 0 10px"
+						onClick={() => onRemovePost(id)}
+					/>
+				)}
 			</div>
 		</div>
 	);
@@ -59,5 +61,9 @@ export const SpecialPanel = styled(SpecialPanelContainer)`
 		display: flex;
 		align-items: center;
 		gap: 10px;
+
+		& i {
+			cursor: auto;
+		}
 	}
 `;

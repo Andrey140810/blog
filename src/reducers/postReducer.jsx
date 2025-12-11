@@ -1,11 +1,11 @@
 import { ACTION_TYPE } from '../action';
 
 const initialPostState = {
-	id: null,
-	title: null,
-	imageUrl: null,
-	content: null,
-	publishedAt: null,
+	id: '',
+	title: '',
+	imageUrl: '',
+	content: '',
+	publishedAt: '',
 	comments: [],
 };
 

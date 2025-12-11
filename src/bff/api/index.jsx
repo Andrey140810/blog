@@ -13,3 +13,4 @@ export { deleteSession } from './delete-session';
 export { deleteComment } from './delete-comment';
 export { updatePost } from './update-post';
 export { deletePost } from './delete-post';
+export { addPost } from './add-post';

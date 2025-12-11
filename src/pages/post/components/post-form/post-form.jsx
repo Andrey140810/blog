@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Icon, Input } from '../../../../components';
 import { SpecialPanel } from '../special-panel/special-panel';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { sanitizeContent } from '../../../../utils';
 import { useDispatch } from 'react-redux';
 import { savePostAsync } from '../../../../action';
@@ -12,40 +12,42 @@ const PostFormContainer = ({
 	className,
 	post: { id, title, imageUrl, content, publishedAt },
 }) => {
+	const [imageUrlValue, setImageUrlValue] = useState(imageUrl ?? '');
+	const [titleValue, setTitleValue] = useState(title ?? '');
+	const contentRef = useRef(null);
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const imageRef = useRef(null);
-	const titleRef = useRef(null);
-	const contentRef = useRef(null);
 	const requestServer = useServerRequest();
 
 	const onSavePost = () => {
-		const newImageUrl = imageRef.current.value;
-		const newTitle = titleRef.current.value;
 		const newContent = sanitizeContent(contentRef.current.innerHTML);
 
 		dispatch(
 			savePostAsync(requestServer, {
 				id,
-				imageUrl: newImageUrl,
-				title: newTitle,
+				imageUrl: imageUrlValue,
+				title: titleValue,
 				content: newContent,
 			}),
-		).then(() => {
+		).then(({ id }) => {
 			navigate(`/post/${id}`);
 		});
 	};
 
+	const onImageUrlValue = ({ target }) => setImageUrlValue(target.value);
+	const onTitleValue = ({ target }) => setTitleValue(target.value);
+
 	return (
 		<div className={className}>
 			<Input
-				ref={imageRef}
-				defaultValue={imageUrl}
+				value={imageUrlValue}
+				onChange={onImageUrlValue}
 				placeholder="Изображение..."
 			/>
 			<Input
-				ref={titleRef}
-				defaultValue={title}
+				value={titleValue}
+				onChange={onTitleValue}
 				placeholder="Заголовок..."
 			/>
 			<SpecialPanel
@@ -76,5 +78,8 @@ export const PostForm = styled(PostFormContainer)`
 		text-align: left;
 		font-size: 18px;
 		white-space: pre-line;
+		border: 1px solid grey;
+		border-radius: 5px;
+		min-height: 200px;
 	}
 `;
