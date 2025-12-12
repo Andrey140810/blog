@@ -14,3 +14,4 @@ export { deleteComment } from './delete-comment';
 export { updatePost } from './update-post';
 export { deletePost } from './delete-post';
 export { addPost } from './add-post';
+export { getPosts } from './get-posts';

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header, Footer, Modal } from './components';
 import styled from 'styled-components';
-import { Authorization, Post, Registraion, Users } from './pages';
+import { Authorization, Main, Post, Registraion, Users } from './pages';
 import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './action';
@@ -18,7 +18,7 @@ const AppColumn = styled.div`
 
 const Content = styled.div`
 	text-align: center;
-	padding: 130px 0;
+	padding: 130px 0 0 0;
 `;
 
 export function Blog() {
@@ -44,7 +44,7 @@ export function Blog() {
 			<Header />
 			<Content>
 				<Routes>
-					<Route path="/" element={<div>Главная страница</div>} />
+					<Route path="/" element={<Main />} />
 					<Route path="/login" element={<Authorization />} />
 					<Route path="/register" element={<Registraion />} />
 					<Route path="/users" element={<Users />} />

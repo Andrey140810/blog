@@ -10,3 +10,4 @@ export { addPostComment } from './add-post-comment';
 export { removePostComment } from './remove-post-comment';
 export { savePost } from './save-post';
 export { removePost } from './remove-post';
+export { fetchPosts } from './fetch-posts';
