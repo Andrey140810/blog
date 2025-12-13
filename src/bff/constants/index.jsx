@@ -1,1 +1,0 @@
-export { ROLE } from './role';

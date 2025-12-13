@@ -16,14 +16,14 @@ export const Button = styled(ButtonContainer)`
 	justify-content: center;
 	border-radius: 8px;
 	border: 1px solid transparent;
-	cursor: pointer;
+	cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 	transition: border-color 0.25s;
 	transition: transform 0.25s;
-	&:hover {
+	&:hover:not(:disabled) {
 		border-color: #646cff;
 		transform: scale(1.05);
 	}
-	&:active {
+	&:active:not(:disabled) {
 		transform: scale(0.95);
 		color: #646cff;
 	}
