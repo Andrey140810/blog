@@ -1,44 +1,65 @@
 import styled from 'styled-components';
-import { Input } from '../../components';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useServerRequest } from '../../hooks';
-import { PostCard, Pagination } from './components';
+import { PostCard, Pagination, Search } from './components';
 import { PAGINATION_LIMIT } from '../../constants';
-import { getLastPage } from '../../utils';
+import { debounce, getLastPage } from '../../utils';
 
 const MainContainer = ({ className }) => {
 	const [posts, setPosts] = useState([]);
 	const [page, setPage] = useState(1);
 	const [lastPage, setLastPage] = useState(1);
+	const [shouldSearch, setShouldSearch] = useState(false);
+	const [searchPhrase, setSearchPhrase] = useState('');
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
-		requestServer('fetchPosts', page, PAGINATION_LIMIT).then(
+		requestServer('fetchPosts', searchPhrase, page, PAGINATION_LIMIT).then(
 			({ res: { posts, links } }) => {
 				setPosts(posts);
 				setLastPage(getLastPage(links));
 			},
 		);
-	}, [requestServer, page]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [requestServer, page, shouldSearch]);
+
+	const runDelaySearch = useMemo(() => debounce(setShouldSearch, 2000), []);
+
+	const onSearch = ({ target }) => {
+		setSearchPhrase(target.value);
+		runDelaySearch(!shouldSearch);
+	};
 
 	return (
 		<div className={className}>
-			<Input className="input-search" placeholder="Поиск..." />
-			<div className="card-container">
-				{posts.map(
-					({ id, imageUrl, publishedAt, title, commentsCount }) => (
-						<PostCard
-							key={id}
-							id={id}
-							title={title}
-							publishedAt={publishedAt}
-							imageUrl={imageUrl}
-							commentsCount={commentsCount}
-						/>
-					),
+			<div className="posts-and-search">
+				<Search searchPhrase={searchPhrase} onChange={onSearch} />
+				{posts.length > 0 ? (
+					<div className="card-container">
+						{posts.map(
+							({
+								id,
+								imageUrl,
+								publishedAt,
+								title,
+								commentsCount,
+							}) => (
+								<PostCard
+									key={id}
+									id={id}
+									title={title}
+									publishedAt={publishedAt}
+									imageUrl={imageUrl}
+									commentsCount={commentsCount}
+								/>
+							),
+						)}
+					</div>
+				) : (
+					<div className="no-posts">Статьи не найдены</div>
 				)}
 			</div>
-			{lastPage > 1 && (
+			{lastPage > 1 && posts.length > 0 && (
 				<Pagination page={page} lastPage={lastPage} setPage={setPage} />
 			)}
 		</div>
@@ -48,10 +69,9 @@ const MainContainer = ({ className }) => {
 export const Main = styled(MainContainer)`
 	max-width: 300px;
 	margin: 60px auto;
-
-	& .input-search {
-		margin-bottom: 60px;
-	}
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 
 	& .card-container {
 		display: grid;

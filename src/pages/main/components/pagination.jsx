@@ -31,6 +31,10 @@ export const Pagination = styled(PaginationContainer)`
 	display: flex;
 	justify-content: center;
 	gap: 5px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 140px;
 
 	& Button {
 		font-size: 12px;

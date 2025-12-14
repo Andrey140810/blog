@@ -1,5 +1,5 @@
 export const getLastPage = (links) => {
-	const result = links.match(/^.+page=(\d{1,4})&_limit=9>; rel="last"$/);
+	const result = links.match(/_page=(\d{1,4})&_limit=\d{1,3}>; rel="last"/);
 
-	return Number(result[1]);
+	return result ? Number(result[1]) : 1;
 };

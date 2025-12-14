@@ -14,6 +14,7 @@ const AppColumn = styled.div`
 	min-height: 100%;
 	background-color: #fff;
 	margin: auto;
+	position: relative;
 `;
 
 const Content = styled.div`
