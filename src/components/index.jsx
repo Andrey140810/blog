@@ -7,3 +7,4 @@ export { H2 } from './h2/h2';
 export { AuthFormError } from './auth-form-error/auth-form-error';
 export { Content } from './content/content';
 export { Modal } from './modal/modal';
+export { Error } from './error/error';
