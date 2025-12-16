@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ButtonContainer = ({ children, className, ...props }) => {
 	return (
@@ -19,6 +20,7 @@ export const Button = styled(ButtonContainer)`
 	cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 	transition: border-color 0.25s;
 	transition: transform 0.25s;
+	width: ${({ width = '100%' }) => width};
 	&:hover:not(:disabled) {
 		border-color: #646cff;
 		transform: scale(1.05);
@@ -27,5 +29,9 @@ export const Button = styled(ButtonContainer)`
 		transform: scale(0.95);
 		color: #646cff;
 	}
-	width: ${({ width = '100%' }) => width};
 `;
+
+Button.propTypes = {
+	children: PropTypes.node.isRequired,
+	width: PropTypes.string,
+};

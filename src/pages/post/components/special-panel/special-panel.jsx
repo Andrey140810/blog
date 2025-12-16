@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useServerRequest } from '../../../../hooks';
 import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../action';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const SpecialPanelContainer = ({ className, id, publishedAt, iconButton }) => {
 	const dispatch = useDispatch();
@@ -67,3 +68,9 @@ export const SpecialPanel = styled(SpecialPanelContainer)`
 		}
 	}
 `;
+
+SpecialPanel.propTypes = {
+	id: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+	iconButton: PropTypes.node.isRequired,
+};

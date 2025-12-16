@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const InputContainer = forwardRef(({ className, ...props }, ref) => {
@@ -14,3 +15,7 @@ export const Input = styled(InputContainer)`
 	border-radius: 5px;
 	font-size: 18px;
 `;
+
+Input.propTypes = {
+	width: PropTypes.string,
+};

@@ -3,7 +3,7 @@ import { H2, Icon } from '../../../../components';
 import { SpecialPanel } from '../special-panel/special-panel';
 import { useNavigate } from 'react-router-dom';
 import { checkAccess } from '../../../../utils';
-import { ROLE } from '../../../../constants';
+import { PROP_TYPE, ROLE } from '../../../../constants';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '../../../../selectors';
 
@@ -53,3 +53,7 @@ export const PostContent = styled(PostContentContainer)`
 		margin-bottom: 5px;
 	}
 `;
+
+PostContent.propTypes = {
+	post: PROP_TYPE.POST.isRequired,
+};
